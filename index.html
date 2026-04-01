@@ -1332,34 +1332,39 @@ footer {
         </div>
       </div>
 
-      <div class="contact-form reveal">
+      <form class="contact-form reveal" action="https://formsubmit.co/info@pbccapitaladvisory.com" method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New Consultation Request — PBC Capital Advisory">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
         <div class="form-row">
           <div class="fg">
             <label>First Name</label>
-            <input type="text" placeholder="First">
+            <input type="text" name="first_name" placeholder="First" required>
           </div>
           <div class="fg">
             <label>Last Name</label>
-            <input type="text" placeholder="Last">
+            <input type="text" name="last_name" placeholder="Last" required>
           </div>
         </div>
         <div class="fg">
           <label>Company Name</label>
-          <input type="text" placeholder="ABC Industries LLC">
+          <input type="text" name="company" placeholder="ABC Industries LLC">
         </div>
         <div class="form-row">
           <div class="fg">
             <label>Email Address</label>
-            <input type="email" placeholder="you@company.com">
+            <input type="email" name="email" placeholder="you@company.com" required>
           </div>
           <div class="fg">
             <label>Phone</label>
-            <input type="tel" placeholder="(561) 555-0100">
+            <input type="tel" name="phone" placeholder="(561) 555-0100">
           </div>
         </div>
         <div class="fg">
           <label>I Am Interested In</label>
-          <select>
+          <select name="service">
             <option value="">Select a Service</option>
             <option>Selling My Business (Sell-Side M&amp;A)</option>
             <option>Acquiring a Business (Buy-Side M&amp;A)</option>
@@ -1371,7 +1376,7 @@ footer {
         </div>
         <div class="fg">
           <label>Approximate Annual Revenue</label>
-          <select>
+          <select name="revenue">
             <option value="">Select Range</option>
             <option>Under $5M</option>
             <option>$5M – $15M</option>
@@ -1382,11 +1387,11 @@ footer {
         </div>
         <div class="fg">
           <label>Tell Us About Your Situation</label>
-          <textarea placeholder="Brief description of your business and what you're hoping to accomplish..."></textarea>
+          <textarea name="message" placeholder="Brief description of your business and what you're hoping to accomplish..."></textarea>
         </div>
-        <button class="form-submit">Request Confidential Consultation</button>
+        <button type="submit" class="form-submit">Request Confidential Consultation</button>
         <p class="confidential-note">All submissions are confidential. We will respond within one business day. PBC Capital Advisory LLC does not share your information with third parties without your consent.</p>
-      </div>
+      </form>
     </div>
   </div>
 </section>

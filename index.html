@@ -244,6 +244,11 @@ h2.display-light em { color: var(--amber-bright); }
   transition: opacity 0.75s ease, transform 0.75s ease;
 }
 .reveal.on { opacity:1; transform:none; }
+/* Fallback: if JS fails, show all content after 2s */
+@keyframes fallbackShow {
+  to { opacity:1; transform:none; }
+}
+.reveal { animation: fallbackShow 0s 2s forwards; }
 
 /* ─────────────────────────────────────────
    ABOUT BAND
@@ -1290,7 +1295,7 @@ footer {
             <div class="ci-icon">✉</div>
             <div>
               <div class="ci-label">Email</div>
-              <div class="ci-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d24232b220d3d2f2e2e2c3d24392c212c293b243e223f34632e2220">[email&#160;protected]</a></div>
+              <div class="ci-value">info@pbccapitaladvisory.com</div>
             </div>
           </div>
           <div class="ci-item">
@@ -1391,7 +1396,7 @@ footer {
 </footer>
 
 <!-- ═══════════ JS ═══════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Sticky nav
 const nav = document.getElementById('navbar');
 window.addEventListener('scroll', () => {

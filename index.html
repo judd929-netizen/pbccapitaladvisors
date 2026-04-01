@@ -63,7 +63,7 @@ nav.scrolled {
   box-shadow: 0 2px 24px rgba(14,20,25,0.07);
 }
 
-.nav-brand { display:flex; align-items:baseline; gap:10px; text-decoration:none; }
+.nav-brand { display:flex; align-items:baseline; gap:10px; text-decoration:none; cursor:pointer; }
 .nav-brand-name {
   font-family: 'Playfair Display', serif;
   font-size: 20px; font-weight:700;
@@ -84,8 +84,10 @@ nav.scrolled {
   font-size:13px; font-weight:400; letter-spacing:0.04em;
   color: var(--steel); text-decoration:none;
   transition: color 0.2s;
+  cursor: pointer;
 }
 .nav-links a:hover { color: var(--ink); }
+.nav-links a.nav-active { color: var(--ink); }
 .nav-cta {
   background: var(--ink) !important;
   color: var(--paper) !important;
@@ -94,6 +96,13 @@ nav.scrolled {
   text-transform: uppercase;
 }
 .nav-cta:hover { background: var(--amber) !important; color:var(--white) !important; }
+.nav-cta.nav-active { background: var(--amber) !important; color:var(--white) !important; }
+
+/* ─────────────────────────────────────────
+   PAGE SWITCHING
+───────────────────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
 
 /* ─────────────────────────────────────────
    HERO
@@ -184,6 +193,7 @@ nav.scrolled {
   border: 1px solid rgba(255,255,255,0.2);
   transition: border-color 0.2s, color 0.2s;
   display:inline-block;
+  cursor:pointer;
 }
 .btn-line:hover { border-color: var(--amber); color: var(--amber-bright); }
 
@@ -729,7 +739,7 @@ footer {
 .footer-nav a {
   font-size:12px; font-weight:300; letter-spacing:0.06em;
   color:rgba(255,255,255,0.3); text-decoration:none;
-  transition:color 0.2s;
+  transition:color 0.2s; cursor:pointer;
 }
 .footer-nav a:hover { color:var(--amber); }
 
@@ -775,21 +785,22 @@ footer {
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav id="navbar">
-  <a href="#" class="nav-brand">
+  <a class="nav-brand" onclick="showPage('home')">
     <span class="nav-brand-name">PBC Capital Advisory</span>
     <span class="nav-brand-tag">LLC</span>
   </a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#sectors">Sectors</a>
-    <a href="#team">Our Team</a>
-    <a href="#contact" class="nav-cta">Contact Us</a>
+    <a onclick="showPage('about')" data-page="about">About</a>
+    <a onclick="showPage('services')" data-page="services">Services</a>
+    <a onclick="showPage('process')" data-page="process">Process</a>
+    <a onclick="showPage('sectors')" data-page="sectors">Sectors</a>
+    <a onclick="showPage('team')" data-page="team">Our Team</a>
+    <a onclick="showPage('contact')" data-page="contact" class="nav-cta">Contact Us</a>
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ═══════════ HOME ═══════════ -->
+<div id="page-home" class="page active">
 <section id="hero">
   <div class="hero-texture"></div>
   <div class="hero-lines"></div>
@@ -805,14 +816,14 @@ footer {
     </h1>
 
     <p class="hero-sub">
-      PBC Capital Advisory delivers CPA-led M&A advisory for middle-market businesses. 
-      Backed by 25 years of experience spanning Big Four accounting, Fortune 500 corporate 
+      PBC Capital Advisory delivers CPA-led M&A advisory for middle-market businesses.
+      Backed by 25 years of experience spanning Big Four accounting, Fortune 500 corporate
       development, and global private equity — we know how deals get made.
     </p>
 
     <div class="hero-btns">
-      <a href="#contact" class="btn-fill">Begin Confidential Discussion</a>
-      <a href="#services" class="btn-line">Our Services</a>
+      <a onclick="showPage('contact')" class="btn-fill">Begin Confidential Discussion</a>
+      <a onclick="showPage('services')" class="btn-line">Our Services</a>
     </div>
   </div>
 
@@ -833,8 +844,10 @@ footer {
     </div>
   </div>
 </section>
+</div>
 
 <!-- ═══════════ ABOUT ═══════════ -->
+<div id="page-about" class="page">
 <section id="about">
   <div class="section-wrap">
     <div class="about-grid">
@@ -847,6 +860,7 @@ footer {
           <p>Our accounting and tax foundation means we don't just run a process — we understand the numbers at a fundamental level and use that to protect and maximize value for our clients at every step.</p>
         </div>
       </div>
+
       <div class="about-pillars reveal">
         <div class="pillar">
           <div class="p-icon">🏛</div>
@@ -876,177 +890,6 @@ footer {
             <p>No handoffs to junior staff. The principals who win your engagement execute it.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ SERVICES ═══════════ -->
-<section id="services">
-  <div class="section-wrap">
-    <div class="services-header reveal">
-      <div>
-        <div class="section-eyebrow"><span>What We Do</span></div>
-        <h2 class="display">Advisory <em>Services</em></h2>
-      </div>
-      <p>From strategic preparation through close, PBC Capital guides clients through every dimension of a transaction — whether you're building, buying, or transitioning.</p>
-    </div>
-
-    <div class="services-cards reveal">
-      <div class="svc-card">
-        <div class="svc-num">01 — Sell-Side</div>
-        <h3>Sell-Side M&amp;A Advisory</h3>
-        <p>Comprehensive representation for owners seeking to exit or recapitalize. We prepare, position, and run a competitive process designed to maximize enterprise value.</p>
-        <ul class="svc-list">
-          <li>Business Valuation &amp; EBITDA Normalization</li>
-          <li>Confidential Information Memorandum</li>
-          <li>Buyer Identification &amp; Outreach</li>
-          <li>Management Presentations</li>
-          <li>LOI Negotiation</li>
-          <li>Due Diligence Management &amp; Close</li>
-        </ul>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">02 — Buy-Side</div>
-        <h3>Buy-Side M&amp;A Advisory</h3>
-        <p>Strategic acquisition support for companies, private equity, and family offices seeking to grow through acquisitions. We source, screen, and execute.</p>
-        <ul class="svc-list">
-          <li>Acquisition Strategy &amp; Criteria</li>
-          <li>Proprietary Target Sourcing</li>
-          <li>Quality of Earnings Review</li>
-          <li>Deal Structuring &amp; Tax Analysis</li>
-          <li>Purchase Agreement Support</li>
-          <li>Integration Planning</li>
-        </ul>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">03 — Capital</div>
-        <h3>Capital Raise</h3>
-        <p>Equity and debt solutions for growth, recapitalization, or ownership transition. We access private equity, family offices, mezzanine lenders, and institutional capital.</p>
-        <ul class="svc-list">
-          <li>Growth Equity &amp; Minority Recaps</li>
-          <li>Debt Placement (Senior &amp; Sub)</li>
-          <li>Mezzanine Financing</li>
-          <li>ESOP Advisory</li>
-          <li>Investor Materials &amp; Outreach</li>
-        </ul>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">04 — Readiness</div>
-        <h3>Transaction Readiness</h3>
-        <p>Pre-sale preparation 12–24 months before going to market. We strengthen your financial story, close gaps buyers will find, and enhance defensible EBITDA.</p>
-        <ul class="svc-list">
-          <li>Financial Statement Cleanup</li>
-          <li>Working Capital Optimization</li>
-          <li>Management Presentation Coaching</li>
-          <li>Data Room Preparation</li>
-        </ul>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">05 — Tax</div>
-        <h3>Tax Structure Advisory</h3>
-        <p>CPA-led transaction tax planning — one of our true differentiators. We model the tax consequences of structure before you sign, not after.</p>
-        <ul class="svc-list">
-          <li>Asset vs. Stock Election Analysis</li>
-          <li>Installment Sale Modeling</li>
-          <li>QSBS &amp; Section 1202 Planning</li>
-          <li>Entity Restructuring Pre-Sale</li>
-          <li>Earnout &amp; Rollover Tax Analysis</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ PROCESS ═══════════ -->
-<section id="process">
-  <div class="section-wrap">
-    <div class="process-top reveal">
-      <div>
-        <div class="section-eyebrow" style="margin-bottom:18px;">
-          <span style="color:rgba(255,255,255,0.4);">How We Work</span>
-        </div>
-        <h2 class="display display-light">The Deal <em>Process</em></h2>
-      </div>
-      <p>A disciplined, four-phase approach to every transaction. Select your deal type below to see how we execute.</p>
-    </div>
-
-    <div class="tab-row reveal">
-      <button class="tab-btn active" onclick="switchTab(event,'sell')">Sell-Side</button>
-      <button class="tab-btn" onclick="switchTab(event,'buy')">Buy-Side</button>
-      <button class="tab-btn" onclick="switchTab(event,'cap')">Capital Raise</button>
-    </div>
-
-    <div class="tab-panel active" id="tab-sell">
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 01</div>
-        <h4>Preparation &amp; Valuation</h4>
-        <p>Engage PBC Capital, sign advisory agreement, gather and normalize financials, calculate valuation range, and review tax structure for the exit.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 02</div>
-        <h4>Marketing Materials</h4>
-        <p>Draft Confidential Information Memorandum, management presentation, and financial model. Identify and prioritize strategic and financial buyer universe.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 03</div>
-        <h4>Competitive Process</h4>
-        <p>Blind teaser outreach, NDA execution, CIM distribution, buyer Q&amp;A, management meetings, and first-round IOI collection and analysis.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 04</div>
-        <h4>LOI, Diligence &amp; Close</h4>
-        <p>Negotiate LOI, manage due diligence data room, coordinate legal and accounting workstreams, resolve purchase price adjustments, and close.</p>
-      </div>
-    </div>
-
-    <div class="tab-panel" id="tab-buy">
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 01</div>
-        <h4>Acquisition Strategy</h4>
-        <p>Define deal criteria — size, sector, geography, EBITDA range, deal structure preferences, and platform vs. add-on considerations.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 02</div>
-        <h4>Target Identification</h4>
-        <p>Proprietary sourcing via PBC Capital's network, direct outreach to off-market targets, and management introductions under confidentiality.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 03</div>
-        <h4>Financial Analysis</h4>
-        <p>CPA-led Quality of Earnings, normalized EBITDA, tax exposure review, working capital assessment, and letter of intent structuring.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 04</div>
-        <h4>Negotiation &amp; Close</h4>
-        <p>Purchase price negotiation, asset vs. stock election, reps and warranties, escrow terms, closing mechanics, and integration planning.</p>
-      </div>
-    </div>
-
-    <div class="tab-panel" id="tab-cap">
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 01</div>
-        <h4>Capital Assessment</h4>
-        <p>Evaluate financing need, appropriate capital type (growth equity, senior debt, mezzanine, or hybrid), and impact on ownership structure.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 02</div>
-        <h4>Materials &amp; Model</h4>
-        <p>Build investor-grade offering memorandum, financial projections, and use-of-proceeds analysis compelling to institutional capital providers.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 03</div>
-        <h4>Investor Outreach</h4>
-        <p>Targeted process engaging PE firms, family offices, mezzanine lenders, and banks aligned with your sector, stage, and capital needs.</p>
-      </div>
-      <div class="proc-step">
-        <div class="proc-step-n">Phase 04</div>
-        <h4>Term Sheet &amp; Close</h4>
-        <p>Negotiate term sheet economics, governance provisions, and anti-dilution mechanics. Manage investor due diligence through to closing.</p>
       </div>
     </div>
   </div>
@@ -1144,8 +987,185 @@ footer {
     </div>
   </div>
 </section>
+</div>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<div id="page-services" class="page">
+<section id="services">
+  <div class="section-wrap">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-eyebrow"><span>What We Do</span></div>
+        <h2 class="display">Advisory <em>Services</em></h2>
+      </div>
+      <p>From strategic preparation through close, PBC Capital guides clients through every dimension of a transaction — whether you're building, buying, or transitioning.</p>
+    </div>
+
+    <div class="services-cards reveal">
+      <div class="svc-card">
+        <div class="svc-num">01 — Sell-Side</div>
+        <h3>Sell-Side M&amp;A Advisory</h3>
+        <p>Comprehensive representation for owners seeking to exit or recapitalize. We prepare, position, and run a competitive process designed to maximize enterprise value.</p>
+        <ul class="svc-list">
+          <li>Business Valuation &amp; EBITDA Normalization</li>
+          <li>Confidential Information Memorandum</li>
+          <li>Buyer Identification &amp; Outreach</li>
+          <li>Management Presentations</li>
+          <li>LOI Negotiation</li>
+          <li>Due Diligence Management &amp; Close</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">02 — Buy-Side</div>
+        <h3>Buy-Side M&amp;A Advisory</h3>
+        <p>Strategic acquisition support for companies, private equity, and family offices seeking to grow through acquisitions. We source, screen, and execute.</p>
+        <ul class="svc-list">
+          <li>Acquisition Strategy &amp; Criteria</li>
+          <li>Proprietary Target Sourcing</li>
+          <li>Quality of Earnings Review</li>
+          <li>Deal Structuring &amp; Tax Analysis</li>
+          <li>Purchase Agreement Support</li>
+          <li>Integration Planning</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">03 — Capital</div>
+        <h3>Capital Raise</h3>
+        <p>Equity and debt solutions for growth, recapitalization, or ownership transition. We access private equity, family offices, mezzanine lenders, and institutional capital.</p>
+        <ul class="svc-list">
+          <li>Growth Equity &amp; Minority Recaps</li>
+          <li>Debt Placement (Senior &amp; Sub)</li>
+          <li>Mezzanine Financing</li>
+          <li>ESOP Advisory</li>
+          <li>Investor Materials &amp; Outreach</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">04 — Readiness</div>
+        <h3>Transaction Readiness</h3>
+        <p>Pre-sale preparation 12–24 months before going to market. We strengthen your financial story, close gaps buyers will find, and enhance defensible EBITDA.</p>
+        <ul class="svc-list">
+          <li>Financial Statement Cleanup</li>
+          <li>Working Capital Optimization</li>
+          <li>Management Presentation Coaching</li>
+          <li>Data Room Preparation</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">05 — Tax</div>
+        <h3>Tax Structure Advisory</h3>
+        <p>CPA-led transaction tax planning — one of our true differentiators. We model the tax consequences of structure before you sign, not after.</p>
+        <ul class="svc-list">
+          <li>Asset vs. Stock Election Analysis</li>
+          <li>Installment Sale Modeling</li>
+          <li>QSBS &amp; Section 1202 Planning</li>
+          <li>Entity Restructuring Pre-Sale</li>
+          <li>Earnout &amp; Rollover Tax Analysis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<div id="page-process" class="page">
+<section id="process">
+  <div class="section-wrap">
+    <div class="process-top reveal">
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:18px;">
+          <span style="color:rgba(255,255,255,0.4);">How We Work</span>
+        </div>
+        <h2 class="display display-light">The Deal <em>Process</em></h2>
+      </div>
+      <p>A disciplined, four-phase approach to every transaction. Select your deal type below to see how we execute.</p>
+    </div>
+
+    <div class="tab-row reveal">
+      <button class="tab-btn active" onclick="switchTab(event,'sell')">Sell-Side</button>
+      <button class="tab-btn" onclick="switchTab(event,'buy')">Buy-Side</button>
+      <button class="tab-btn" onclick="switchTab(event,'cap')">Capital Raise</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-sell">
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 01</div>
+        <h4>Preparation &amp; Valuation</h4>
+        <p>Engage PBC Capital, sign advisory agreement, gather and normalize financials, calculate valuation range, and review tax structure for the exit.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 02</div>
+        <h4>Marketing Materials</h4>
+        <p>Draft Confidential Information Memorandum, management presentation, and financial model. Identify and prioritize strategic and financial buyer universe.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 03</div>
+        <h4>Competitive Process</h4>
+        <p>Blind teaser outreach, NDA execution, CIM distribution, buyer Q&amp;A, management meetings, and first-round IOI collection and analysis.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 04</div>
+        <h4>LOI, Diligence &amp; Close</h4>
+        <p>Negotiate LOI, manage due diligence data room, coordinate legal and accounting workstreams, resolve purchase price adjustments, and close.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-buy">
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 01</div>
+        <h4>Acquisition Strategy</h4>
+        <p>Define deal criteria — size, sector, geography, EBITDA range, deal structure preferences, and platform vs. add-on considerations.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 02</div>
+        <h4>Target Identification</h4>
+        <p>Proprietary sourcing via PBC Capital's network, direct outreach to off-market targets, and management introductions under confidentiality.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 03</div>
+        <h4>Financial Analysis</h4>
+        <p>CPA-led Quality of Earnings, normalized EBITDA, tax exposure review, working capital assessment, and letter of intent structuring.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 04</div>
+        <h4>Negotiation &amp; Close</h4>
+        <p>Purchase price negotiation, asset vs. stock election, reps and warranties, escrow terms, closing mechanics, and integration planning.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-cap">
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 01</div>
+        <h4>Capital Assessment</h4>
+        <p>Evaluate financing need, appropriate capital type (growth equity, senior debt, mezzanine, or hybrid), and impact on ownership structure.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 02</div>
+        <h4>Materials &amp; Model</h4>
+        <p>Build investor-grade offering memorandum, financial projections, and use-of-proceeds analysis compelling to institutional capital providers.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 03</div>
+        <h4>Investor Outreach</h4>
+        <p>Targeted process engaging PE firms, family offices, mezzanine lenders, and banks aligned with your sector, stage, and capital needs.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-n">Phase 04</div>
+        <h4>Term Sheet &amp; Close</h4>
+        <p>Negotiate term sheet economics, governance provisions, and anti-dilution mechanics. Manage investor due diligence through to closing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
 
 <!-- ═══════════ SECTORS ═══════════ -->
+<div id="page-sectors" class="page">
 <section id="sectors">
   <div class="section-wrap">
     <div class="sectors-header reveal">
@@ -1194,8 +1214,10 @@ footer {
     </div>
   </div>
 </section>
+</div>
 
 <!-- ═══════════ TEAM ═══════════ -->
+<div id="page-team" class="page">
 <section id="team">
   <div class="section-wrap">
     <div class="team-header reveal">
@@ -1264,8 +1286,10 @@ footer {
     </div>
   </div>
 </section>
+</div>
 
 <!-- ═══════════ CONTACT ═══════════ -->
+<div id="page-contact" class="page">
 <section id="contact">
   <div class="section-wrap">
     <div class="contact-grid">
@@ -1366,11 +1390,12 @@ footer {
     </div>
   </div>
 </section>
+</div>
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
   <div class="footer-brand">
-    <div class="nav-brand">
+    <div class="nav-brand" onclick="showPage('home')">
       <span class="nav-brand-name">PBC Capital Advisory</span>
       <span class="nav-brand-tag">LLC</span>
     </div>
@@ -1380,12 +1405,12 @@ footer {
   </div>
 
   <div class="footer-nav">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#sectors">Sectors</a>
-    <a href="#team">Team</a>
-    <a href="#contact">Contact</a>
+    <a onclick="showPage('about')">About</a>
+    <a onclick="showPage('services')">Services</a>
+    <a onclick="showPage('process')">Process</a>
+    <a onclick="showPage('sectors')">Sectors</a>
+    <a onclick="showPage('team')">Team</a>
+    <a onclick="showPage('contact')">Contact</a>
   </div>
 
   <div class="footer-legal">
@@ -1403,18 +1428,47 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Reveal on scroll
-const reveals = document.querySelectorAll('.reveal');
-const ro = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('on'), i * 90);
-      ro.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-reveals.forEach(el => ro.observe(el));
+// Page switching
+function showPage(id) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Show target page
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  // Update nav active state
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a => a.classList.remove('nav-active'));
+  const activeLink = document.querySelector('.nav-links a[data-page="' + id + '"]');
+  if (activeLink) activeLink.classList.add('nav-active');
+  // Scroll to top
+  window.scrollTo(0, 0);
+  // Re-run reveal animations for newly visible elements
+  triggerReveals();
+}
 
-// Process tabs
+// Reveal on scroll
+function triggerReveals() {
+  const reveals = document.querySelectorAll('.page.active .reveal:not(.on)');
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('on'), i * 90);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => ro.observe(el));
+}
+
+// Initial reveal for home page
+triggerReveals();
+
+// Process tabs (within the Process page)
 function switchTab(event, id) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+</script>
+</body>
+</html>

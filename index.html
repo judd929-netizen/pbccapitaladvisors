@@ -362,6 +362,36 @@ h2.display-light em { color: var(--amber-bright); }
 }
 .svc-card:nth-child(3n) { border-right:none; }
 .svc-card:nth-last-child(-n+3) { border-bottom:none; }
+
+.svc-cta {
+  padding: 44px 36px;
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  background:
+    linear-gradient(to top, rgba(14,20,25,0.88) 0%, rgba(14,20,25,0.45) 60%, rgba(14,20,25,0.2) 100%),
+    url('palm-sunset.jpg') center/cover no-repeat,
+    linear-gradient(180deg, #1c1028 0%, #5c2a50 25%, #b84820 55%, #e07208 75%, #1a0c04 100%);
+  border-bottom: none;
+}
+.svc-cta-label {
+  font-family:'DM Mono', monospace;
+  font-size:10px; letter-spacing:0.28em; text-transform:uppercase;
+  color: var(--amber-bright); margin-bottom:12px;
+}
+.svc-cta h3 {
+  font-family:'Playfair Display', serif;
+  font-size:22px; font-weight:400; line-height:1.25;
+  color: var(--white); margin-bottom:24px;
+}
+.svc-cta-btn {
+  display:inline-block; align-self:flex-start;
+  background: var(--amber); color: var(--white);
+  font-family:'DM Sans', sans-serif;
+  font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;
+  padding:12px 24px; text-decoration:none; border:none; cursor:pointer;
+  transition: background 0.2s;
+}
+.svc-cta-btn:hover { background: var(--amber-bright); }
 .svc-card:hover { background: var(--paper); }
 
 .svc-card::after {
@@ -1109,6 +1139,12 @@ footer {
           <li>Entity Restructuring Pre-Sale</li>
           <li>Earnout &amp; Rollover Tax Analysis</li>
         </ul>
+      </div>
+
+      <div class="svc-cta">
+        <div class="svc-cta-label">Palm Beach Gardens, FL</div>
+        <h3>Ready to explore a transaction?</h3>
+        <a class="svc-cta-btn" onclick="showPage('contact')">Begin Confidential Discussion</a>
       </div>
     </div>
   </div>

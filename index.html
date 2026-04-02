@@ -402,7 +402,7 @@ h2.display-light em { color: var(--amber-bright); }
 ───────────────────────────────────────── */
 #process {
   padding: 120px 0;
-  background: var(--ink);
+  background: var(--paper);
 }
 
 .process-top {
@@ -411,32 +411,32 @@ h2.display-light em { color: var(--amber-bright); }
 }
 .process-top p {
   font-size:16px; font-weight:300; line-height:1.8;
-  color:rgba(255,255,255,0.5); margin-top:24px;
+  color: var(--steel); margin-top:24px;
 }
 
 .tab-row {
   display:flex; gap:0; margin-bottom:52px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--rule-dark);
 }
 .tab-btn {
   background:none; border:none; cursor:pointer;
   font-family:'DM Mono', monospace;
   font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
-  color:rgba(255,255,255,0.35);
+  color: var(--mist);
   padding:14px 28px;
   border-bottom: 2px solid transparent;
   margin-bottom:-1px;
   transition: all 0.2s;
 }
-.tab-btn:hover { color:rgba(255,255,255,0.65); }
-.tab-btn.active { color: var(--amber-bright); border-bottom-color: var(--amber); }
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
 
 .tab-panel { display:none; }
 .tab-panel.active { display:grid; grid-template-columns:repeat(4,1fr); }
 
 .proc-step {
   padding: 36px 28px;
-  border-right: 1px solid rgba(255,255,255,0.07);
+  border-right: 1px solid var(--rule-dark);
   position:relative;
 }
 .proc-step:last-child { border-right:none; }
@@ -448,12 +448,12 @@ h2.display-light em { color: var(--amber-bright); }
 }
 .proc-step h4 {
   font-family:'Playfair Display', serif;
-  font-size:20px; font-weight:400; color:var(--white);
+  font-size:20px; font-weight:400; color: var(--ink);
   margin-bottom:12px; line-height:1.2;
 }
 .proc-step p {
   font-size:13px; font-weight:300; line-height:1.7;
-  color:rgba(255,255,255,0.42);
+  color: var(--steel);
 }
 
 /* Arrow connector */
@@ -461,7 +461,7 @@ h2.display-light em { color: var(--amber-bright); }
   content:'→';
   position:absolute; right:-12px; top:36px;
   color:var(--amber); font-size:14px;
-  opacity:0.5;
+  opacity:0.6;
 }
 
 /* ─────────────────────────────────────────
@@ -1108,9 +1108,9 @@ footer {
     <div class="process-top reveal">
       <div>
         <div class="section-eyebrow" style="margin-bottom:18px;">
-          <span style="color:rgba(255,255,255,0.4);">How We Work</span>
+          <span>How We Work</span>
         </div>
-        <h2 class="display display-light">The Deal <em>Process</em></h2>
+        <h2 class="display">The Deal <em>Process</em></h2>
       </div>
       <p>A disciplined, four-phase approach to every transaction. Select your deal type below to see how we execute.</p>
     </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PBC Capital Advisory LLC | M&A Advisory | Palm Beach Gardens, FL</title>
+<title>PBC Capital Advisors LLC | M&A Advisory | Palm Beach Gardens, FL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -63,21 +63,36 @@ nav.scrolled {
   box-shadow: 0 2px 24px rgba(14,20,25,0.07);
 }
 
-.nav-brand { display:flex; align-items:baseline; gap:10px; text-decoration:none; cursor:pointer; }
+.nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; cursor:pointer; }
+.nav-logo-block {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-block span {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--amber-bright); letter-spacing: 0.04em;
+}
+.nav-logo-text {
+  display: flex; flex-direction: column; gap: 3px;
+}
 .nav-brand-name {
   font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight:700;
-  color: var(--ink); letter-spacing:0.01em;
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); letter-spacing: 0.01em; line-height: 1;
 }
 .nav-brand-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight:400;
-  color: var(--amber); letter-spacing:0.18em;
-  text-transform: uppercase;
-  border: 1px solid var(--rule);
-  padding: 3px 8px;
-  position: relative; top: -1px;
+  font-size: 8.5px; font-weight: 400;
+  color: var(--amber); letter-spacing: 0.22em;
+  text-transform: uppercase; line-height: 1;
 }
+/* Footer brand — invert block for dark background */
+.footer-brand .nav-logo-block { background: var(--amber); }
+.footer-brand .nav-logo-block span { color: var(--ink); }
+.footer-brand .nav-brand-name { color: var(--paper); font-size: 15px; }
+.footer-brand .nav-brand-tag { color: var(--amber-bright); }
 
 .nav-links { display:flex; gap:36px; align-items:center; }
 .nav-links a {
@@ -743,8 +758,6 @@ footer {
   flex-wrap:wrap; gap:24px;
 }
 
-.footer-brand .nav-brand-name { font-size:17px; color:var(--paper); }
-.footer-brand .nav-brand-tag { color:var(--amber); }
 
 .footer-nav { display:flex; gap:28px; flex-wrap:wrap; }
 .footer-nav a {
@@ -799,8 +812,11 @@ footer {
 <!-- ═══════════ NAV ═══════════ -->
 <nav id="navbar">
   <a class="nav-brand" onclick="showPage('home')">
-    <span class="nav-brand-name">PBC Capital Advisory</span>
-    <span class="nav-brand-tag">LLC</span>
+    <div class="nav-logo-block"><span>PBC</span></div>
+    <div class="nav-logo-text">
+      <span class="nav-brand-name">Capital Advisors</span>
+      <span class="nav-brand-tag">LLC · M&amp;A Advisory</span>
+    </div>
   </a>
   <div class="nav-links">
     <a onclick="showPage('about')" data-page="about">About</a>
@@ -829,7 +845,7 @@ footer {
     </h1>
 
     <p class="hero-sub">
-      PBC Capital Advisory delivers CPA-led M&A advisory for middle-market businesses.
+      PBC Capital Advisors delivers CPA-led M&A advisory for middle-market businesses.
       Backed by 25 years of experience spanning Big Four accounting, Fortune 500 corporate
       development, and global private equity — we know how deals get made.
     </p>
@@ -868,7 +884,7 @@ footer {
         <div class="section-eyebrow"><span>About the Firm</span></div>
         <h2 class="display">Built on <em>Expertise</em>.<br>Grounded in<br><em>Accountability.</em></h2>
         <div class="about-body" style="margin-top:28px;">
-          <p>PBC Capital Advisory LLC is a boutique investment bank headquartered in <strong>Palm Beach Gardens, Florida</strong>, founded by two CPAs with combined decades of experience across Big Four accounting, Fortune 500 corporate development, and global private equity.</p>
+          <p>PBC Capital Advisors LLC is a boutique investment bank headquartered in <strong>Palm Beach Gardens, Florida</strong>, founded by two CPAs with combined decades of experience across Big Four accounting, Fortune 500 corporate development, and global private equity.</p>
           <p>We specialize in <strong>sell-side and buy-side M&A advisory</strong> for middle-market businesses in the Industrials, Consumer Products, Healthcare, Technology, and Business Services sectors.</p>
           <p>Our accounting and tax foundation means we don't just run a process — we understand the numbers at a fundamental level and use that to protect and maximize value for our clients at every step.</p>
         </div>
@@ -958,7 +974,7 @@ footer {
       <div class="reveal">
         <div class="edge-callout">
           <p class="callout-quote">The difference between a good deal and a great one usually comes down to who truly understands the numbers — and how to defend them.</p>
-          <div class="callout-attr">PBC Capital Advisory — Our Philosophy</div>
+          <div class="callout-attr">PBC Capital Advisors — Our Philosophy</div>
 
           <div class="creds-block">
             <div class="creds-title">Founder Credentials</div>
@@ -1348,7 +1364,7 @@ footer {
 
       <form class="contact-form reveal" action="https://formsubmit.co/info@pbccapitaladvisory.com" method="POST">
         <!-- FormSubmit config -->
-        <input type="hidden" name="_subject" value="New Consultation Request — PBC Capital Advisory">
+        <input type="hidden" name="_subject" value="New Consultation Request — PBC Capital Advisors">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
 
@@ -1404,7 +1420,7 @@ footer {
           <textarea name="message" placeholder="Brief description of your business and what you're hoping to accomplish..."></textarea>
         </div>
         <button type="submit" class="form-submit">Request Confidential Consultation</button>
-        <p class="confidential-note">All submissions are confidential. We will respond within one business day. PBC Capital Advisory LLC does not share your information with third parties without your consent.</p>
+        <p class="confidential-note">All submissions are confidential. We will respond within one business day. PBC Capital Advisors LLC does not share your information with third parties without your consent.</p>
       </form>
     </div>
   </div>
@@ -1415,8 +1431,11 @@ footer {
 <footer>
   <div class="footer-brand">
     <div class="nav-brand" onclick="showPage('home')">
-      <span class="nav-brand-name">PBC Capital Advisory</span>
-      <span class="nav-brand-tag">LLC</span>
+      <div class="nav-logo-block"><span>PBC</span></div>
+      <div class="nav-logo-text">
+        <span class="nav-brand-name">Capital Advisors</span>
+        <span class="nav-brand-tag">LLC · M&amp;A Advisory</span>
+      </div>
     </div>
     <div style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:6px;font-weight:300;">
       2000 PGA Blvd, Suite 4440 · Palm Beach Gardens, FL 33408
@@ -1433,7 +1452,7 @@ footer {
   </div>
 
   <div class="footer-legal">
-    &copy; 2025 PBC Capital Advisory LLC. All rights reserved.<br>
+    &copy; 2025 PBC Capital Advisors LLC. All rights reserved.<br>
     Securities transactions conducted through a registered broker-dealer. FINRA Series 7 &amp; 79 Licensed. Member FINRA / SIPC.<br>
     <span style="color:rgba(255,255,255,0.12);">This website is for informational purposes only and does not constitute a solicitation.</span>
   </div>

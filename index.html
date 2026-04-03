@@ -63,36 +63,41 @@ nav.scrolled {
   box-shadow: 0 2px 24px rgba(14,20,25,0.07);
 }
 
-.nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; cursor:pointer; }
-.nav-logo-block {
-  width: 42px; height: 42px; flex-shrink: 0;
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
+.nav-brand { display:flex; align-items:center; text-decoration:none; cursor:pointer; }
+.nav-logo-stacked { text-align: center; }
+.nav-logo-top {
+  display: inline-flex; align-items: flex-end; gap: 7px;
 }
-.nav-logo-block span {
+.nav-logo-bars {
+  display: flex; align-items: flex-end; gap: 3px; margin-bottom: 3px;
+}
+.nav-logo-bars span {
+  display: block; width: 4px; border-radius: 1px;
+  background: var(--paper);
+}
+.nav-logo-bars span:nth-child(1) { height: 7px; }
+.nav-logo-bars span:nth-child(2) { height: 12px; }
+.nav-logo-bars span:nth-child(3) { height: 17px; }
+.nav-logo-pbc {
   font-family: 'Playfair Display', serif;
-  font-size: 14px; font-weight: 700;
-  color: var(--amber-bright); letter-spacing: 0.04em;
+  font-size: 22px; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--ink); line-height: 1;
 }
-.nav-logo-text {
-  display: flex; flex-direction: column; gap: 3px;
+.nav-logo-rule {
+  height: 1px; background: var(--ink); opacity: 0.2; margin: 5px 0;
 }
-.nav-brand-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px; font-weight: 700;
-  color: var(--ink); letter-spacing: 0.01em; line-height: 1;
-}
-.nav-brand-tag {
+.nav-logo-sub {
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px; font-weight: 400;
-  color: var(--amber); letter-spacing: 0.22em;
-  text-transform: uppercase; line-height: 1;
+  font-size: 7.5px; font-weight: 400; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--steel);
 }
-/* Footer brand — invert block for dark background */
-.footer-brand .nav-logo-block { background: var(--amber); }
-.footer-brand .nav-logo-block span { color: var(--ink); }
-.footer-brand .nav-brand-name { color: var(--paper); font-size: 15px; }
-.footer-brand .nav-brand-tag { color: var(--amber-bright); }
+/* Nav — bars in amber on light background */
+nav .nav-logo-bars span { background: var(--amber); }
+/* Footer — invert for dark background, ivory bars */
+.footer-brand .nav-logo-bars span { background: var(--paper); }
+.footer-brand .nav-logo-pbc { color: var(--paper); }
+.footer-brand .nav-logo-rule { background: var(--paper); opacity: 0.2; }
+.footer-brand .nav-logo-sub { color: var(--mist); }
 
 .nav-links { display:flex; gap:36px; align-items:center; }
 .nav-links a {
@@ -856,10 +861,10 @@ footer {
 <!-- ═══════════ NAV ═══════════ -->
 <nav id="navbar">
   <a class="nav-brand" onclick="showPage('home')">
-    <div class="nav-logo-block"><span>PBC</span></div>
-    <div class="nav-logo-text">
-      <span class="nav-brand-name">Capital Advisors</span>
-      <span class="nav-brand-tag">M&amp;A Advisory</span>
+    <div class="nav-logo-stacked">
+      <div class="nav-logo-pbc">PBC</div>
+      <div class="nav-logo-rule"></div>
+      <div class="nav-logo-sub">Capital Advisors LLC</div>
     </div>
   </a>
   <div class="nav-links">
@@ -1484,10 +1489,15 @@ footer {
 <footer>
   <div class="footer-brand">
     <div class="nav-brand" onclick="showPage('home')">
-      <div class="nav-logo-block"><span>PBC</span></div>
-      <div class="nav-logo-text">
-        <span class="nav-brand-name">Capital Advisors</span>
-        <span class="nav-brand-tag">M&amp;A Advisory</span>
+      <div class="nav-logo-stacked">
+        <div class="nav-logo-top">
+          <div class="nav-logo-bars">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="nav-logo-pbc">PBC</div>
+        </div>
+        <div class="nav-logo-rule"></div>
+        <div class="nav-logo-sub">Capital Advisors LLC</div>
       </div>
     </div>
     <div style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:6px;font-weight:300;">
